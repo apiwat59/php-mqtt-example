@@ -1,8 +1,8 @@
 <?php
 require('vendor/autoload.php');
 
-$url = parse_url(getenv('CLOUDMQTT_URL'));
-$topic = substr($url['path'], 1);
+$url = parse_url(getenv('m16.cloudmqtt.com'));
+$topic = substr($url['/ESP/relay'], 1);
 
 $client_id = "phpMQTT-subscriber";
 
@@ -10,8 +10,8 @@ function procmsg($topic, $msg){
   echo "Msg Recieved: $msg\n";
 }
     
-$mqtt = new Bluerhinos\phpMQTT($url['host'], $url['port'], $client_id);
-if ($mqtt->connect(true, NULL, $url['user'], $url['pass'])) {
+$mqtt = new Bluerhinos\phpMQTT($url['m16.cloudmqtt.com'], $url['17495'], $client_id);
+if ($mqtt->connect(true, NULL, $url['cszwalpv'], $url['Gqxx2jCFxwsR'])) {
   $topics[$topic] = array(
       "qos" => 0,
       "function" => "procmsg"
